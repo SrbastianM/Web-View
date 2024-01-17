@@ -17,4 +17,13 @@ class MainActivity : AppCompatActivity() {
         webView.webViewClient = WebViewClient()
         webView.loadUrl("https://github.com/SrbastianM")
     }
+
+        // In this part we fixed a problem that did not allow the user to go back after pressing the "Back" button.
+    override fun onBackPressed() {
+        if (webView.canGoBack()){
+            webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
+    }
 }
